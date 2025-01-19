@@ -151,7 +151,9 @@ To send frames via MQTT:
 
 ## Authors
 - **Ronnie Thong**
-- **Group 3 Members**
+- **Cheang Kai Yang**
+- **May**
+- **Chuu**
 
 ---
 
