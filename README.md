@@ -53,11 +53,32 @@ This project implements a **5G Facial Recognition Door Access System** leveragin
    git clone https://github.com/RonnieThongYH/5G-Facial-Recognition-Group3.git
    cd 5G-Facial-Recognition-Group3/Transmitter\ (Raspberry\ Pi)/scripts
    ```
-2. Run the setup script:
+2. Configure the 5G module:
+   ```bash
+   python3 configure_5g_module.py
+   ```
+3. Run the setup script:
    ```bash
    ./setup_raspberrypi.sh
    ```
-3. Start the MQTT publisher:
+4. Start the 5G network:
+   ```bash
+   ./start_5g_network.sh
+   ```
+
+#### If Using RTSP:
+To stream video via RTSP:
+```bash
+./start_camera_stream.sh
+```
+
+#### If Using MQTT:
+To send frames via MQTT:
+1. Install camera and MQTT dependencies:
+   ```bash
+   ./setup_camera_mqtt.sh
+   ```
+2. Start the MQTT publisher:
    ```bash
    python3 send_frames_mqtt.py
    ```
@@ -67,11 +88,21 @@ This project implements a **5G Facial Recognition Door Access System** leveragin
    ```bash
    cd 5G-Facial-Recognition-Group3/Receiver\ (MEC)/scripts
    ```
-2. Ensure the API is running on `http://localhost:32168`.
-3. Run the face recognition script:
-   ```bash
-   python3 recognition.py
-   ```
+2. Configure the 5G connection:
+   - Run the AT command script:
+     ```bash
+     python3 AT_command.py
+     ```
+   - Connect to your laptop through cellular settings.
+3. Use the appropriate script:
+   - For registering new faces:
+     ```bash
+     python3 registration.py
+     ```
+   - For face recognition:
+     ```bash
+     python3 recognition.py
+     ```
 
 ---
 
@@ -97,9 +128,14 @@ This project implements a **5G Facial Recognition Door Access System** leveragin
 - **`send_frames_mqtt.py`:** Captures video frames and publishes them to the MQTT broker.
 - **`configure_5g_module.py`:** Configures the 5G module for connectivity.
 - **`setup_camera_mqtt.sh`:** Installs dependencies for MQTT and OpenCV.
+- **`setup_raspberrypi.sh`:** Configures the Raspberry Pi for initial setup.
+- **`start_5g_network.sh`:** Establishes the 5G network connection.
+- **`start_camera_stream.sh`:** Streams video via RTSP.
 
 ### Receiver (MEC)
+- **`AT_command.py`:** Configures the 5G connection for the MEC.
 - **`recognition.py`:** Handles frame reception, facial recognition, and LED control.
+- **`registration.py`:** Registers new faces to the facial recognition system.
 - **`options.py`:** Configures API endpoints and directories.
 - **`LED_SSH.py`:** Sends SSH commands to the Raspberry Pi for LED control.
 
