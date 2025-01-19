@@ -30,8 +30,7 @@ This project implements a **5G Facial Recognition Door Access System** leveragin
 │   │   ├── registration.py           # Registers new faces to the recognition system
 │   │   ├── options.py                # Configuration for the API and directories
 │   │   ├── LED_SSH.py                # Controls the Raspberry Pi's LED via SSH
-│   │   ├── AT_command.py             # Sends AT commands to the 5G module
-├── logs/                             # Logs for debugging and monitoring
+│   │   ├── AT_command.py             # Sends AT commands to the 5G module                             # Logs for debugging and monitoring
 ```
 
 ---
