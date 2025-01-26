@@ -1,3 +1,4 @@
+#!/bin/bash
 apt purge modemmanager -y
 apt purge network-manager -y
 apt update && apt upgrade

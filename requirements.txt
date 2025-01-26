@@ -1,0 +1,6 @@
+pyserial
+opencv-python
+requests
+imutils
+paramiko
+paho-mqtt
