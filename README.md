@@ -24,6 +24,8 @@ This project implements a **5G Facial Recognition Door Access System** leveragin
 │   │   ├── setup_raspberrypi.sh      # Initial setup for Raspberry Pi
 │   │   ├── start_5g_network.sh       # Starts the 5G network connection
 │   │   ├── start_camera_stream.sh    # Streams video via RTSP
+│   │   ├── start_webrtc.sh           # Starts UV4L WebRTC service
+│   │   ├── webrtc_install.sh         # Installs UV4L WebRTC dependencies
 ├── Receiver (MEC)/
 │   ├── scripts/
 │   │   ├── recognition.py            # Receives frames and performs face recognition
@@ -67,17 +69,27 @@ Run the following script to install dependencies and configure the Raspberry Pi:
 ```
 
 #### 4. Start the 5G Network
-1. Run the AT command script again:
+1. Run the AT command script:
    ```bash
-   python3 AT_command.py
+   python3 configure_5g_module.py
    ```
 2. Wait 10 seconds for the 5G Hat to reboot.
 3. Start the 5G network using the following command:
    ```bash
-   sudo mbim-network /dev/cdc-wdm0 start
+   ./start_5g_network.sh
    ```
 
-#### 5. Camera and MQTT Setup
+#### 5. Install and Start WebRTC
+1. Install WebRTC dependencies by running:
+   ```bash
+   ./webrtc_install.sh
+   ```
+2. Start the WebRTC service:
+   ```bash
+   ./start_webrtc.sh
+   ```
+
+#### 6. Camera and MQTT Setup
 If using MQTT for frame transmission:
 1. Install camera and MQTT dependencies:
    ```bash
@@ -139,8 +151,10 @@ If using RTSP for video streaming:
 - **`configure_5g_module.py`:** Configures the 5G module for connectivity.
 - **`setup_camera_mqtt.sh`:** Installs dependencies for MQTT and OpenCV.
 - **`setup_raspberrypi.sh`:** Configures the Raspberry Pi for initial setup.
-- **`start_5g_network.py`:** Establishes the 5G network connection.
+- **`start_5g_network.sh`:** Establishes the 5G network connection.
 - **`start_camera_stream.sh`:** Streams video via RTSP.
+- **`start_webrtc.sh`:** Starts the WebRTC service for real-time communication.
+- **`webrtc_install.sh`:** Installs the WebRTC environment and dependencies.
 
 ### Receiver (MEC)
 - **`AT_command.py`:** Configures the 5G connection for the MEC.
