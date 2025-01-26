@@ -1,6 +1,6 @@
 #!/bin/bash
-apt purge modemmanager -y
-apt purge network-manager -y
-apt update && apt upgrade
-apt install libglib2.0-dev libmbim-utils libmbim-glib-dev
-reboot
+sudo apt purge modemmanager -y
+sudo apt purge network-manager -y
+sudo apt update && sudo apt upgrade
+sudo apt install libglib2.0-dev libmbim-utils libmbim-glib-dev
+sudo reboot

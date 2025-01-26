@@ -1,7 +1,7 @@
 #!/bin/bash
 
-apt install -y mosquitto mosquitto-clients
-systemctl enable mosquitto.service
+sudo apt install -y mosquitto mosquitto-clients
+sudo systemctl enable mosquitto.service
 mosquitto -v
 pip install paho-mqtt
 pip install opencv-python-headless==4.6.0.66
