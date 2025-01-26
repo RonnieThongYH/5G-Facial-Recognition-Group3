@@ -77,20 +77,7 @@ Run the following script to install dependencies and configure the Raspberry Pi:
    sudo mbim-network /dev/cdc-wdm0 start
    ```
 
-#### 5. Configure and Start MBIM Interface
-1. After rebooting, navigate to the `AT_command_pi.py` script in the repository.
-2. Right-click the file and open it with Thonny.
-3. Run the script. If `pyserial` is not installed, install it using:
-   ```bash
-   pip install pyserial
-   ```
-4. Wait 10 seconds for the 5G Hat to reboot.
-5. Start the MBIM network using the following command:
-   ```bash
-   sudo mbim-network /dev/cdc-wdm0 start
-   ```
-
-#### 6. Camera and MQTT Setup
+#### 5. Camera and MQTT Setup
 If using MQTT for frame transmission:
 1. Install camera and MQTT dependencies:
    ```bash
@@ -177,3 +164,8 @@ If using RTSP for video streaming:
 - **Cheang Kai Yang**
 - **May**
 - **Chuu**
+
+---
+
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for details.
