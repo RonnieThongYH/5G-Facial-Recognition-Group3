@@ -46,34 +46,52 @@ This project implements a **5G Facial Recognition Door Access System** leveragin
 - **Software:**
   - Python 3.8+
   - MQTT Broker (e.g., Mosquitto)
+  - Thonny Python IDE
 
 ### Raspberry Pi Setup
-1. Clone the repository:
+#### 1. Hardware Setup
+1. Connect the Raspberry Pi and 5G Hat with the USB connector, attach the antennas.
+2. Connect the Raspberry Pi to a monitor, keyboard, and mouse. Power on the Raspberry Pi.
+3. Connect to the "SPStudent" Wi-Fi network (refer to Lab 3 for details).
+
+#### 2. Clone the Repository
+```bash
+git clone https://github.com/RonnieThongYH/5G-Facial-Recognition-Group3.git
+cd 5G-Facial-Recognition-Group3/Transmitter\ \(Raspberry\ Pi\)/scripts
+```
+
+#### 3. Run the Setup Script
+Run the following script to install dependencies and configure the Raspberry Pi:
+```bash
+./setup_raspberrypi.sh
+```
+
+#### 4. Configure AT Commands and Start the 5G Network
+1. Run the AT command script again:
    ```bash
-   git clone https://github.com/RonnieThongYH/5G-Facial-Recognition-Group3.git
-   cd 5G-Facial-Recognition-Group3/Transmitter\ (Raspberry\ Pi)/scripts
+   python3 AT_command.py
    ```
-2. Configure the 5G module:
-   ```bash
-   python3 configure_5g_module.py
-   ```
-3. Run the setup script:
-   ```bash
-   ./setup_raspberrypi.sh
-   ```
-4. Start the 5G network:
+2. Wait 10 seconds for the 5G Hat to reboot.
+3. Start the 5G network by running the following script:
    ```bash
    ./start_5g_network.sh
    ```
 
-#### If Using RTSP:
-To stream video via RTSP:
-```bash
-./start_camera_stream.sh
-```
+#### 5. Configure and Start MBIM Interface
+1. After rebooting, navigate to the `AT_command_pi.py` script in the repository.
+2. Right-click the file and open it with Thonny.
+3. Run the script. If `pyserial` is not installed, install it using:
+   ```bash
+   pip install pyserial
+   ```
+4. Wait 10 seconds for the 5G Hat to reboot.
+5. Start the MBIM network using the following command:
+   ```bash
+   sudo mbim-network /dev/cdc-wdm0 start
+   ```
 
-#### If Using MQTT:
-To send frames via MQTT:
+#### 6. Camera and MQTT Setup
+If using MQTT for frame transmission:
 1. Install camera and MQTT dependencies:
    ```bash
    ./setup_camera_mqtt.sh
@@ -83,10 +101,15 @@ To send frames via MQTT:
    python3 send_frames_mqtt.py
    ```
 
+If using RTSP for video streaming:
+```bash
+./start_camera_stream.sh
+```
+
 ### MEC Setup
 1. Navigate to the MEC scripts directory:
    ```bash
-   cd 5G-Facial-Recognition-Group3/Receiver\ (MEC)/scripts
+   cd 5G-Facial-Recognition-Group3/Receiver\ \(MEC\)/scripts
    ```
 2. Configure the 5G connection:
    - Run the AT command script:
@@ -129,7 +152,7 @@ To send frames via MQTT:
 - **`configure_5g_module.py`:** Configures the 5G module for connectivity.
 - **`setup_camera_mqtt.sh`:** Installs dependencies for MQTT and OpenCV.
 - **`setup_raspberrypi.sh`:** Configures the Raspberry Pi for initial setup.
-- **`start_5g_network.sh`:** Establishes the 5G network connection.
+- **`start_5g_network.py`:** Establishes the 5G network connection.
 - **`start_camera_stream.sh`:** Streams video via RTSP.
 
 ### Receiver (MEC)
@@ -154,8 +177,3 @@ To send frames via MQTT:
 - **Cheang Kai Yang**
 - **May**
 - **Chuu**
-
----
-
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
