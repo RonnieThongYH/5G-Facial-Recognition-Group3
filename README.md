@@ -66,15 +66,15 @@ Run the following script to install dependencies and configure the Raspberry Pi:
 ./setup_raspberrypi.sh
 ```
 
-#### 4. Configure AT Commands and Start the 5G Network
+#### 4. Start the 5G Network
 1. Run the AT command script again:
    ```bash
    python3 AT_command.py
    ```
 2. Wait 10 seconds for the 5G Hat to reboot.
-3. Start the 5G network by running the following script:
+3. Start the 5G network using the following command:
    ```bash
-   ./start_5g_network.sh
+   sudo mbim-network /dev/cdc-wdm0 start
    ```
 
 #### 5. Configure and Start MBIM Interface
