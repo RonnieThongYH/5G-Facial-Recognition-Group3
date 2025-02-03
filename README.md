@@ -82,19 +82,13 @@ python3 configure_5g_module.py
 ./start_5g_network.sh
 ```
 
-#### 5. Install and Start WebRTC
-```bash
-./webrtc_install.sh
-./start_webrtc.sh
-```
-
-#### 6. Camera and MQTT Setup
+#### 5. Camera and MQTT Setup
 For MQTT:
 ```bash
 ./setup_camera_mqtt.sh
 ```
 
-#### 7. Restart MQTT Service (If Necessary)
+#### 6. Restart MQTT Service (If Necessary)
 After setting up the Raspberry Pi, the MQTT service may need to be restarted to ensure it listens on the correct network interface.
 
 1. Kill any existing processes on port 1883:
@@ -122,7 +116,7 @@ After setting up the Raspberry Pi, the MQTT service may need to be restarted to 
    sudo systemctl restart mosquitto
    ```
 
-#### 8. Send Frames to Topic
+#### 7. Send Frames to Topic
 ```bash
 python3 send_frames_mqtt.py
 ```
