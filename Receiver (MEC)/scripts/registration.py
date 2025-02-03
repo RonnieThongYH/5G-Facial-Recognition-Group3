@@ -11,17 +11,16 @@ import base64
 
 # Create an instance of the Options class
 opts = Options()
-    
-#Put your name
-name = "j"
 
-MQTT_BROKER = "100.70.118.250"
+# Put your name
+name = "May"
+
+MQTT_BROKER = "172.30.212.124"
 MQTT_RECEIVE = "home/server"
-
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc))
+    print("Connected with result code " + str(rc))
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
@@ -49,7 +48,6 @@ client.connect(MQTT_BROKER)
 # Starting thread which will receive the frames
 client.loop_start()
 
-
 # Define function to register a face !!!
 def register_face(img_path, user_id):
     # This function sends the face image and the user id to the server to register !!!
@@ -73,7 +71,6 @@ def register_face(img_path, user_id):
 
 # Define the main function
 def main():
-
     global frame
     # Captures the video frames from the camera,
     # detects the faces in the frames,
@@ -90,7 +87,7 @@ def main():
     # Initialize variables to keep track of frame count, predictions, and frame skipping
     frame_index = 0
     predictions = {}
-    skip_frame = 5
+    skip_frame = 1  # Reduce frame skipping for smoother performance
 
     # Begin the main loop to process frames from the camera
     while True:
@@ -99,7 +96,7 @@ def main():
             print("Stop capturing...")
             break
 
-         # Capture a frame from the camera
+        # Capture a frame from the camera
         if frame is None:
             print("Camera closed")
             break
@@ -112,11 +109,10 @@ def main():
             if frame_index % skip_frame != 0:
                 continue
         
-         # Get the current timestamp
-        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-        # Add the timestamp to the frame
-        cv2.putText(frame, timestamp, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 1, cv2.LINE_AA)
+        # Resize the frame to reduce resolution for smoother processing
+        frame = cv2.resize(frame, (640, 480))
+        # Apply Gaussian blur to smooth the frame
+        frame = cv2.GaussianBlur(frame, (3, 3), 0)
         
         # Encode the frame as a JPEG image
         retval, new_frame = cv2.imencode('.jpg', frame)

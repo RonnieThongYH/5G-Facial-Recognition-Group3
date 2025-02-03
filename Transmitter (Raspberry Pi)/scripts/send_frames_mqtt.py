@@ -4,7 +4,7 @@ import paho.mqtt.client as mqtt
 import base64
 import time
 # Raspberry PI IP address
-MQTT_BROKER = "100.111.65.22"
+MQTT_BROKER = "127.0.0.1"
 # Topic on which frame will be published
 MQTT_SEND = "home/server"
 # Object to capture the frames

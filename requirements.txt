@@ -4,3 +4,5 @@ requests
 imutils
 paramiko
 paho-mqtt
+matplotlib
+dash

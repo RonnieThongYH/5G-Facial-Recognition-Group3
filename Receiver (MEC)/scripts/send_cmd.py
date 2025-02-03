@@ -2,7 +2,7 @@ import paramiko
 
 # Replace these with your Raspberry Pi's IP address, username, and password.
 
-raspberry_pi_ip = "100.70.118.250"
+raspberry_pi_ip = "172.30.212.124"
 username = "pi"
 password = "raspberry"
 # Establish SSH connection
