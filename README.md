@@ -37,10 +37,9 @@ This project implements a **5G Facial Recognition Door Access System** leveragin
 │   │   ├── dashboard.py              # Displays data visualization for performance tracking
 │   │   ├── matplot.py                # Generates graphs using Matplotlib
 │   │   ├── send_cmd.py               # Sends additional command controls to devices
-├── Data/
-│   ├── recognition_logs.csv          # Logs of recognition events
-│   ├── latest_bar_chart.png          # Visualization of latest recognition stats
-│   ├── latest_frame.jpg              # Most recent captured frame
+├── recognition_logs.csv          # Logs of recognition events
+├── latest_bar_chart.png          # Visualization of latest recognition stats
+├── latest_frame.jpg              # Most recent captured frame
 ```
 
 ---
